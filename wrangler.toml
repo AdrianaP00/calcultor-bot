@@ -1,3 +1,4 @@
-name = "calculator-bot"
+name = "calcultor-bot"
 main = "src/index.js"
 compatibility_date = "2023-05-27"
+account_id = "c836b75a1ab85000f117c7e68787e7ef"
