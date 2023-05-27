@@ -1,15 +1,13 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npx wrangler dev src/index.js` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npx wrangler publish src/index.js --name my-worker` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+// Note that we're importing from 'grammy/web', not 'grammy'.
+import { Bot, webhookCallback } from "grammy/web";
 
-export default {
-	async fetch(request, env, ctx) {
-		return new Response("Hello World!");
-	},
-};
+// The following line of code assumes that you have configured the secrets BOT_TOKEN and BOT_INFO.
+// See https://developers.cloudflare.com/workers/platform/environment-variables/#secrets-on-deployed-workers.
+// The BOT_INFO is obtained from `bot.api.getMe()`.
+const bot = new Bot(BOT_TOKEN, { botInfo: BOT_INFO });
+
+bot.command("start", async (ctx) => {
+  await ctx.reply("Hello, world!");
+});
+
+addEventListener("fetch", webhookCallback(bot, "cloudflare"));
