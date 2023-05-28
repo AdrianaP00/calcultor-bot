@@ -7,7 +7,7 @@ import { Bot, webhookCallback } from "grammy/web";
 const bot = new Bot("6107196857:AAHADvNYpZFqLc6GgvgSPN1LMq5SO5A0QLY");
 
 bot.command("start", async (ctx) => {
-  await ctx.reply("Hello W!");
+  await ctx.reply("Hello Telegram!");
 });
 
 addEventListener("fetch", webhookCallback(bot, "cloudflare"));
